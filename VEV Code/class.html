@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Class and constructor</title>
+<link rel="stylesheet" href="style.css">
+</head>  
+<body>
+<!--header starts-->
+<div class="row mycontainer" style="background-color: rgb(128, 230, 255);">
+      <div>
+          <img src="images/vev.png" height="150px" width="150px"/>
+      </div>
+      <div>
+          <h1 align="center" style="margin-top: 15%;">Class and Constructor</h1>
+      </div>    
+  </div> 
+<!--header end-->
+
+<!--body content starts from here-->
+<div class="row">
+  <div class="col-12">
+
+<pre class="para">
+<b>Class:</b>
+     -It is Organise relevent things.
+     -It is user define datatype.
+     -It is a blueprint or template for creating object.
+     -It Contains properties and methods.
+      For Ex.with bank of multiple class.
+<b>Syntax Of Class:</b>
+      access modifier class ClassName{
+           //properties       -to hold data
+           //constructor      -default overloaded
+           //method(function) -To process data
+      }
+          
+</pre>
+<hr>
+<pre class="para">
+<b>Construtor:</b>
+      -It is special function.
+      -Identical name as that of the class name.
+      -It is used to initialize/build/construct the properties.
+      -To their default values/assigned values.
+      -used in allocation in memory.
+<b>Type of constructor:</b>
+      1.Default constructor
+      2.Parameter Constructor(overloaded constructor)
+<b>Default constructor:</b>
+      -A constructor that has no parameters is known as default constructor.
+      -default constructor provides the dafault values to the object like null,0 etc.depending on the type.
+       for Ex. Student(){                                     //Student is a class name
+                 super();                                     //to invoke the super class method
+                 system.out.println("Deafault constructor");  //it is used to print message on console
+              }
+<b>parameter constructor:</b>
+      -A constructor that has parameters is known as parameterized constructor.
+      -If we want to initialize field of the class with our own values,then use a parameterized constructor.
+
+       for Ex.
+            Student(int stdId,String stdName,...){  //Student is a class and stdId,stdName is a properties of class.
+                    super();                          //to invoke the super class method
+                    this.stdId=stdId;                 //this keyword is use to current object in method or constructor. 
+                    this.stdName=stdName;
+                     :            :
+               system.out.println("parameteries constructor");
+              }
+
+
+
+              
+</pre>
+</div>
+</div>
+<!--body content end-->  
+</body>
+</html>
