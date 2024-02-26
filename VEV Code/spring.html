@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>Spring Core</title>
+</head>
+
+<body>
+<!--header starts-->
+    <div class="row mycontainer" style="background-color: rgb(128, 230, 255);">
+        <div>
+            <img src="images/vev.png" height="150px" width="150px"/>
+        </div>
+        <div>
+            <h1 align="center" style="margin-top: 15%;">Spring Core</h1>
+        </div>    
+    </div> 
+<!--header end-->
+
+<!--body content starts from here-->
+<div class="row">
+    <div class="col-12">
+<pre class="para">
+<h2>Spring - DI</h2> 
+    (Dependency Injection == Inversion Of Control(child of DI) - IOC)
+
+<b>Features of Spring:</b>
+    - POJO based.
+    - Plug-ins are very easy.
+    - Transaction Management
+    - Data Access
+
+<b>What is Spring Container ?</b>
+    - Manages the life cycle of an object.
+    - Wires objects automatically.(Unique to spring)(link different object automatically).
+    - Spring Container represented by the Interface ApplicationContext.
+
+<b>Types of Spring Container :</b>
+
+    - BeanFactory	--- Interface
+    - Application	--- Interface
+
+    <b>Note:</b>
+    - Application Represents an Advanced Spring Container
+    - ClassPathXmlApplicationContext is a class that is used to load the xml file (Configuration)From the default class path
+    - it is used start the spring Container.
+
+
+<b>More use case : </b>
+    - payment(Credit card , debit card , upi)
+    - account(SA,CA),etc
+
+<b>Types of Injection:</b>
+    - Setter Injection (Process of injecting values at runtime via setter methods is known as SI)
+    - Syntax :
+            &lt;property name=".." value="..."/>    // any Primitive value ( including string ) can be used
+            &lt;property name=".." ref="spring bean name" />   // internal Objected can be injected
+                
+    
+    - Constructor Injection:
+    - The process of injecting values via constructor at run time is known as CI.
+    - Syntax:
+            &lt;bean id =".." class="..">
+            &lt;constructor-arg index="0" value=".."/>
+            //repeat for other properties --- value of index will change
+
+    <b>Note:</b> 
+        index="0"  -- refers to the first property to the class
+        - the above can be used to inject simple primitive values.
+    
+            &lt;bean id=".." class="..">
+            &lt;constructor-arg index="0" ref="bean id name"/> 		// used to inject a spring bean into another bean
+
+    <b>Autowired:</b>
+            - The process of creating and injecting a bean automatically is known as autowired.
+            
+
+
+<b>What is Dependency Injection(DI)?</b>
+            - The Process of injecting values at run-time via CI / SI / AUTOWIRED is known as DI.
+
+    Example :
+            External Injection of a Bean
+
+                                    Card 	---(Interface)
+                                      |
+                    -----------------------------------------
+                    |                 |                     |
+            MC(MAster card)		VC(Visa card)		AE(American Express card)
+
+
+    // maintainence is easy.
+    // &lt;property...> //always behind the scene invokes the setter methods.
+
+
+<b>What is .properties file and what it contains ?</b>
+    //Properties File
+    - Simple text file.
+    - But the extension is ---- " .properties "
+    - it should contain key / values.
+        ex: login.user=java
+            (key)
+            login.password = 1234
+            (key)
+    - Ease of maintenance related to configuration of files ( DB / Mail Server / Payment / ... )
+    - Everything in lower case
+
+
+    // Integration of XML with properties File			
+    - In src create a simple file with .properties extension.
+    - create a pojo.
+    - In your Configuration file Specify the location of the properties file.<b>(Interview Question)</b>
+            ex: &lt;context:property-placeholder location="classpath:login.properties"/>
+    - Inject the values from the properties
+        ex: &lt;property name="username" value="${logins.username}"/>	//After $ it read as expression language
+    - DemoMain read the data   
+
+
+<b>Annotations:</b>
+		
+    - They are an alternative to xml.
+    - They are java classes either defined in java or frameworks.
+    - They are represented by the symbol @ .
+    - Types of annotation:
+
+        * default annotation
+        * Single valued
+        * Multi Valued
+
+    - They simplify coding.
+    <b>Note :</b> An annotation should always start with @ followed by Upper case letter
+
+
+<b>What are stereotype annotation? (Interview Questions)</b>
+    - @Component(Parent class)
+    - @Repository
+    - @Controller
+    - @Service
+
+
+There are 2 things to instruct spring container to enable spring core annotation and scan for the component class.
+
+    &lt;context:component-scan base-package="pkg name only"/>
+                //scans the component annotation and creates a bean. (Interview Question // IMP)
+
+    &lt;context:annotation-config/>		- enables spring core annotation.
+
+
+=====================================================================================================================
+
+<h2>Spring DAO ( class + DI )    --- Spring JDBC	( DATA ACCESS OBJECT )</h2>	
+    - It encapsulates all data access logic at one place.
+    
+    - Spring has its own drivers in order to support DI.
+
+        DirverManagerDataSource	( from Spring )
+        BasicDataSource	( apache )	
+        Many third parties
+    
+    <b>-Note :</b> Beauty of Spring DAO is ... it allows change of persistence technology using DI
+            that is , any change in RDBMS ( Persistence Technology ) is easily supported by
+            spring DAO ( DI ).
+
+    
+    @Repository
+        - Creates a bean for the class.
+        - Represents DAL layer. 
+        - Identified via component-scan.
+        - Child of @Component.
+
+    <b>DMDS</b>(DriverManagerDataSource)
+        (Spring own Class for connection)(We can use for any database we don't need to change the class)
+        - Different properties present :
+                - driverClassName
+                - url
+                - username
+                - password
+
+
+<b>(Power of Spring)//Spring JDBC</b>
+
+		- It has the following templates
+					JdbcTemplate
+	
+		- Constructors of JdbcTemplate:
+			JT()
+			JT(DataSource ds)
+			JT(DS ds,boolean lazyInit)			
+
+		- Has its own methods to perform CRUD Operations 
+		- It has no dependency on JDBC (java.sql/javax.sql)
+			
+		- Following are the methods to perform CRUD Operations
+				
+			int executeUpdate(String sql,Object args....)
+
+			// Retrieve a Single Object		
+			Object queryForObject(String sql, RowMapper<>,Object args....)
+
+			// Retrieve all the Records		
+			List<> query(String sql, RowMapper<>,Object args)
+
+<b>What is the package of datasource and JDBC templates</b>
+==> spring has its own datasource and JDBC templates comming from 
+        - org.springframework.jdbc.datasource.DriverManagerDataSource
+
+        - org.springframework.jdbc.core.JdbcTemplate
+
+
+=====================================================================================================================
+
+<h2>SPRING MVC</h2>
+- (Modern application are based on this mvc.)
+
+	- Used to Process Form Data , Validation, Conversion
+	- Flexibility in configuring the view layer. It can be JSP, THYMELEAF(Java +Html) , VELOCITY , FREEMARKER . 
+	- Ease of Maintainance of the application.
+			
+	<b><u>Spring MVC Architecture:</u></b>
+
+</pre>
+<img src="images/spring mvc.png" width="100%" height="100%"/>
+
+<pre class="para">
+    Abbrevation:
+        - AIWR:	All Incoming Web Requests.
+        
+        - FC: Front Controller.
+            - It is Represented by the class provided in spring framework. 
+            - The FC Class Name is --- "DispatcherServlet"(Interview question)(DS).	
+            - Acts like a hub for all the layers.
+            - What does FC/DS do?
+            - It delegates the request coming from the client to the respective controller.
+		
+        - RM: REQUESTMAPPING
+            - It maps the url pattern of the request to the Controller Method.
+
+        - DR: DELEGATE REQUEST
+	
+        - C1 / C2 / C3 / CN:
+            - They are Bunch of Controllers.
+            - They are Annotated by @Controller identified via component-scan.
+            - They are Classes responsible to interact with various other layers (Especially SERVICE LAYER).
+        
+        - M & V : Model and View 
+
+        - LV : Logical View	(abcd.jsp) logical view is "abcd"(file name without extension).
+		
+        - VR : VIEW RESOLVER
+            - It is a class that is represented by InternalResourceViewResolver.(IRVR)
+            - It is responsible in converting the Logical view to physical path.
+            - It has to be configured in ApplicationContext.xml . 
+            - IRVR converts logical view to physical path and notifies the DS(DispatcherServlet).
+		
+        - PP: Physical Path
+		
+        - M : Spring Model
+
+        - R : Response   		
+
+<b>- Annotations of Spring MVC:</b>
+		
+        @Controller
+        @RequestMapping("..")
+        @RequestParam("..")
+        @GetMapping("..")
+        @PostMapping("..")
+        @ModelAttribute("..")
+        @PathVariable("..")
+        - Model/ModelMap is an Interface similar to the map.
+    
+    @ModelAttribute
+
+        - It is used to copy all the form elements data into the bean properties automatically.
+        - It basically injects the data from the form into a bean.
+        - Note: It can be used only with spring HTML.
+
+=====================================================================================================================
+
+<h2>Spring MVC - ORM</h2>
+
+        - The above allows any ORM Layer to be integrated with spring MVC.
+        - DI is Achieved by spring's own classes for ORM layer
+    
+    @Transactional : enable Transaction management and to avoid repetitive code 
+        - Configuration for web.xml would remain the same for the DispatcherServlet and the path of the spring configuration file.
+
+    What is Entity Bean?
+		- An Alternative to .hbm.xml File.
+		- It is a Bean that Maps the class to the Database Table Name.
+		- Also Maps the Properties of the Bean to the Target DB Columns
+		- Used to Persist Data across various layers of the application
+		- Some of the important Annotations used are:
+			- @Entity
+			- @Table
+			- @Id
+   			- @Column
+    <b>Note :</b> An entity bean is like a Simple java Class that has Properties / Constructor / Setter / Getter --- but used by Spring ORM
+        to Persist Data / perform CRUD Operations with the Target Database
+
+=====================================================================================================================
+
+<h2>REST API (Representational State Transfer)</h2>
+    - Alternative Name : Web-Services / Restful Web Services / Restful API	
+    - Exchange Data Across Different Technologies.
+    - It is Light - Weight.
+    - Use Http As a Medium of Transfer.
+        
+    <b>JSON :</b>
+		
+        -JSON stands for JavaScript Object Notation.
+        - Plain Text.
+        - Light Weight
+        - Format of JSON
+            {
+                "NAME":VALUE,
+                "NAME":VALUE
+            }
+        - A JSON Object is Represented By Curly Braces.
+        - It Contains Name and Associated Value.
+        - Name Should Always be Within Double Quotes.
+        - Value Can be Number / Character / String / Nested JSON Objects / Arrays / Boolean .
+
+    - NOTE: Any Language can understand JSON Format.
+    - Postman Tool can be used as a client to test REST API.
+    - REST API is based on 3 Wheels ---------
+                                            |
+            ---------------------------------------------------------------------
+            |                               |                                   |                                
+    <b>Resource / Noun</b>                       <b>Verbs</b>                         <b>Data Representation</b>
+        |-Represents URI            |-GET = to fetch data                   |-JSON
+        |-End Point                 |-POST = to submit data                 |-XML
+                                    |-PUT = to modify data
+                                    |-DELETE = to delete data
+
+
+    - MARSHALLING / UNMARSHALLING (Encrypt and Decrypt).
+    - SERIALIZATION / DE-SERIALIZATION.
+    - Data Binding :
+	    - Conversion of a Java Object to JSON and Converionsion of JSON to JAVA object 
+	    - JACKSON Library : Convert JAVA object to JSON and vice versa.  
+
+    @ResponseBody : Annotation is used to print directly whatever you are returning.
+
+    @RestController : Equivalent to @Controller + @ResponseBody	It will print whatever you have returned. ( Interview Que )
+
+    @RequestParam : It is used to capture query parameter.
+
+    @PathVariable : It is used to capture values from the URL path.
+
+
+
+
+
+</pre>
+</div>
+</div>
+</body>
+</html>

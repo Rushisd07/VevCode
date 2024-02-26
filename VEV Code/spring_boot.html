@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>Spring Core</title>
+</head>
+
+<body>
+<!--header starts-->
+    <div class="row mycontainer" style="background-color: rgb(128, 230, 255);">
+        <div>
+            <img src="images/vev.png" height="150px" width="150px"/>
+        </div>
+        <div>
+            <h1 align="center" style="margin-top: 15%;">Spring Boot 3.x</h1>
+        </div>    
+    </div> 
+<!--header end-->
+
+<!--body content starts from here-->
+<div class="row">
+    <div class="col-12">
+<pre class="para">
+<h2>Spring Boot</h2>
+<b>Features of Spring Boot:</b>
+    - Intializer.           --- Setting up of the Infrastructure ( start.spring.io )
+            (SNAPSHOT : Beta Version, M1: Milestone (Can Also be used), RC: Release Version)
+    - Starter Projects.     --- Means All the dependencies in one file  
+    - Auto Configuration    --- Configures DispatcherServlet / VR / etc...
+    - Profiles (Special Concepts in spring-boot only)
+    - Actuator.
+
+<b>Disadvantages in Spring Framework:</b>
+    - Time-consuming Configurations/Dependencies.
+    - Less Felxibility.
+
+    @SpringBootApplication : <b>(Interview Questions)</b>
+        - It's similar to declaring a class with @Configuration, @EnableAutoConfiguration, and @ComponentScan annotations.
+
+    Which package/library helps for auto connfiguration in spring boot?<b>(Interview Question)</b>
+        - spring-boot-autoconfigure package
+
+<b>Logging Levels</b> 
+
+    trace   ---	Complete Information Displayed,Developer Environment
+    debug   ---	Developer Environment
+    info    --- Production Environment,Important information displayed
+    error   --- Gives Information Related To Error
+    off     --- Given
+
+<b>Profiles:</b>
+    - Profiles are an Integral part of Spring Boot Framework as it allows Production Ready Applications Quickly.
+    - We can easily push the application from one environment to another by making the appropriate Profile Active.
+    - Appplication Maintainance becomes easy with Profiles and Configuration.    
+
+<b>MVC</b>
+    - Properties file:
+    - For passing the prefix and suffix in the VR we use:
+            - spring.mvc.view.prefix=/WEB-INF/pages/
+            - spring.mvc.view.suffix=.jsp
+
+Note:
+        - JSP ( View Layer ) can be created in the following folder structure
+            Under src/main/resources
+        - Create the following folder structure
+            META-INF/resources/WEB-INF      ---Spring Boot takes this PAth for JSP Files
+        - jsp files can be placed in the above folder
+
+
+
+
+
+
+
+</pre>
+</div>
+</div>
+</body>
+</html>

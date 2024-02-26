@@ -34,64 +34,47 @@
                 }
             }
         }    
+
 <hr>
 <h3>2. Prime Number :</h3>
 
-        public class PrimeNo {
-
+        class PrimeNo {
             public static void main(String[] args) {
-                int flag = 0;
-                int n=6;
-                for (int i = 2; i <= n / 2; i++) {
-
-                    if (n % i == 0) {
-                        flag = 1;
+                int no = 20;
+                int status=0;
+                for(int i=2; i<=no/2;i++){
+                    if(no%i==0){
+                        status=1;
                         break;
                     }
                 }
-                if (flag==1) {
-                    System.out.println("Prime is not Prime");
-                } else {
-                    System.out.println("Number is Prime");
-
-                }
-
+                    if(status==0){
+                        System.out.println("No. is prime");
+                    }
+                    else{
+                        System.out.println("No. is not prime");
+                    }
             }
         }
-<hr>
-<h3>3. Prime Number Series :</h3>
-            
-        public class primeseries {
 
+<hr>
+<h3>3. Reverse String without using inbuilt function :</h3>
+
+        class Reverse_String {
             public static void main(String[] args) {
-                // TODO Auto-generated method stub
-                int i;
-                int flag;
-                int n = 11;
-                for (i = 2; i <= n; i++) {
-                    flag = 0;
-                    for (int j = 2; j <= i / 2; j++) {
-                        if (i % j == 0) {
-                            flag = 1;
-                            break;
-                        }
-                    }
-                    if (flag == 0) {
-                        System.out.println(i+" is Prime");
-
-                    }
-                    else {
-                        System.out.println(i+" is Not prime");
-                    }
-
+                String s = "Rushi";
+                String a="";
+                for(int i=s.length();i>0;i--){
+                    a+=s.charAt(i-1);   
                 }
-
+                System.out.println(a);
             }
         }
+
 <hr>
-<h3>4. Palindrome :</h3>
+<h3>4. Palindrome Number :</h3>
     
-        public class Palindrome {
+        public class Palindrome_Num {
 
             public static void main(String[] args) {
                 int n = 34443, rem;
@@ -111,58 +94,46 @@
             }
 
         }
+
 <hr>
-<h3>5. PalindromeString :</h3>
+<h3>5. Palindrome String :</h3>
 
-        public class PalindromeString {
-
+        class Palindrome_String {
             public static void main(String[] args) {
-                String a = "madam";
-                String temp = a;
-                String str = "";
-                int n = temp.length();
-                for (int i = n - 1; i >= 0; i--) {
-                    str = str + temp.charAt(i);
+                
+                String s1="MADAM";
+                String s2="";
+                for(int i=s1.length();i>0;i--){
+                    s2+=s1.charAt(i-1);
+                    
+                }
+                
+                if(s1.equals(s2)){
+                    System.out.println(s2+" String is palindrome");
+                }
+                else{
+                    System.out.println(s2+" String is not palindrome");
+                }
+            }
+        }
+
+<hr>
+<h3>6. Fibonacci series in java :</h3>
+
+        class Fibonacci_Series {
+            public static void main(String[] args) {
+                int n1=0, n2=1, sum;
+                System.out.println(n1+" "+n2);
+                for(int i=2;i<10;i++){
+                    sum=n1+n2;
+                    System.out.println(""+sum);
+                    n1=n2;
+                    n2=sum;
                 }
                 System.out.println("");
-                if (a.equals(str)) {
-                    System.out.println("String is palindrome");
-                } else {
-                    System.out.println("String is not palindrome");
-                }
-                System.out.println(str);
             }
         }
-<hr>
-<h3>6. Fibonacci :</h3>
-        import java.util.Scanner;
 
-        public class Fibonacci {
-
-            public static void main(String[] args) {
-                // TODO Auto-generated method stub
-                int n;
-                int fib = 0;
-                int fib1 = 1;
-                int fib2 = 0;
-                int count=0;
-                Scanner in = new Scanner(System.in);
-                n = in.nextInt(); 
-                System.out.println("Series:"); 
-                System.out.println(+fib+"\n"+fib1);
-
-                //for (int i = 2; i < n; i++) {
-                while(n-2>count) {
-                    fib2 = fib + fib1;
-                    System.out.println(fib2);
-                    fib = fib1;
-                    fib1 = fib2;
-                    count++;
-                }
-
-            }
-
-        }
 <hr>
 <h3>7. Factorial :</h3>
         public class Factorial {
@@ -183,22 +154,21 @@
         public class Armstrong {
 
             public static void main(String[] args) {
-                // TODO Auto-generated method stub
-            int n=153; 
-            int temp=n;
-            int sum=0,rem;
-            while(n>0) {
-            rem=n%10;      
-            sum=sum+rem*rem*rem;
-            n=n/10; 
-            System.out.println(sum); 
-            }     
-            if(temp==sum) {
-                System.out.println("Armstrong");
-            }
-            else {
-                System.out.println("Not Armstrong");
-            }
+                int n=153; 
+                int temp=n;
+                int sum=0,rem;
+                while(n>0) {
+                    rem=n%10;      
+                    sum=sum+rem*rem*rem;
+                    n=n/10; 
+                    System.out.println(sum); 
+                }     
+                if(temp==sum) {
+                    System.out.println("Armstrong");
+                }
+                else {
+                    System.out.println("Not Armstrong");
+                }
             }
         }
 <hr>
@@ -264,6 +234,38 @@
             
             }
 
+        }
+
+<hr>
+<h3>11. Year is leap or not</h3>
+    <b>HINT:</b>year is divisible by 4 and 400 but not by 100.
+
+        class LeapYear {
+            public static void main(String[] args) {
+                int year=2024;
+                
+                if(year%100!=0 && year%4==0 || year%400==0){
+                    System.out.println("Leap Year");
+                }
+                else{
+                        System.out.println("Not a Leap Year");
+                    }
+            }
+        }
+
+<hr>
+<h3>12. Half * pyramid pattern in java</h3>
+
+        class Pyramid {
+            public static void main(String[] args) {
+                int rows = 5;
+                for (int i = 1; i <= rows; i++) {
+                    for (int j = 1; j <= i; j++) {
+                        System.out.print("*");
+                    }
+                    System.out.println("");
+                }
+            }
         }
 
 
