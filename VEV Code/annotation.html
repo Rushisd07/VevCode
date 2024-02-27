@@ -3,6 +3,7 @@
 <head>
     <link rel="stylesheet" href="style.css">
     <title>Spring Core</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
 <body>
@@ -21,7 +22,7 @@
 <div class="row">
     <div class="col-12">
 <pre class="para">
-<h2>Annotations & Their Packages</h2> 
+<h2>Annotations & Description & Their Packages</h2> 
 <b>Annotation :</b>
     - They are alternative to XML.
     - They are java classes either defined in java or frameworks.
@@ -32,85 +33,115 @@
         <b>1. Class level annotations
         2. Method level annotations</b>
 
-    <table border="1" style="width: 100%;">
+    <table class="table table-striped">
         <tr align="center">
             <th>Annotation</th>
+            <th>Description</th>
             <th>Package</th>
         </tr>
         <tr>
             <td>@Controller </td>
+            <td>It is used to annotate a Spring MVC controller class.</td>
             <td>org.springframework.stereotype.Controller;</td>
         </tr>
         <tr>
             <td>@Service </td>
+            <td>It indicate that a class belongs to service layer</td>
             <td>org.springframework.stereotype.Service;</td>
         </tr>
         <tr>
             <td>@Repository </td>
+            <td>It is responsible for accessing and manipulating data 
+from a database</td>
             <td>org.springframework.stereotype.Repository;</td>
         </tr>
         <tr>
             <td>@Component </td>
+            <td>It is a Father of all annotations. Used to create a bean.</td>
             <td>org.springframework.stereotype.Component;</td>
         </tr>
         <tr>
             <td>@RestController </td>
+            <td>Used to create restfull web service. Combination of 
+@Controller + @ResponseBody</td>
             <td>org.springframework.web.bind.annotation.RestController;</td>
         </tr>
         <tr>
             <td>@GetMapping </td>
+            <td>Retrieve data from the server. It maps to the specific
+handler method</td>
             <td>org.springframework.web.bind.annotation.GetMapping;</td>
         </tr>
         <tr>
             <td>@PostMapping </td>
+            <td>It send data to the server. Post request method to specific 
+handler method</td>
             <td>org.springframework.web.bind.annotation.PostMapping;</td>
         </tr>
         <tr>
             <td>@RequestMapping </td>
+            <td>Used to map the web request to handler method.</td>
             <td>org.springframework.web.bind.annotation.RequestMapping;</td>
         </tr>
         <tr>
             <td>@PathVariable </td>
+            <td>Retrieve data from the URL path</td>
             <td>org.springframework.web.bind.annotation.PathVariable;</td>
         </tr>
         <tr>
             <td>@RequestParam </td>
+            <td>Used to extract the data from the query parameter.</td>
             <td>org.springframework.web.bind.annotation.RequestParam;</td>
         </tr>
         <tr>
             <td>@Transactional </td>
+            <td>Used to manage database transactions in spring Appln. 
+It used to prevent repetitive code.
+            </td>
             <td>org.springframework.transaction.annotation.Transactional;</td>
         </tr>
         <tr>
             <td>@Autowired </td>
+            <td>Used to create bean and it inject values automatically.</td>
             <td>org.springframework.beans.factory.annotation.Autowired;</td>
         </tr>
         <tr>
             <td>@ResponseBody </td>
+            <td>Instead of rendenring to view page it directly write in 
+the response body. It is usefull for returning JSON, XML
+or other types of Data.</td>
             <td>org.springframework.web.bind.annotation.ResponseBody;</td>
         </tr>
         <tr>
             <td>@ModelAttribute </td>
+            <td>It inject form data into the bean.</td>
             <td>org.springframework.web.bind.annotation.ModelAttribute;</td>
         </tr>
         <tr>
             <td>@Table </td>
+            <td>Used to specify the name of the database table. 
+That the entity class is mapped to.</td>
             <td>javax.persistence.Table;</td>
         </tr>
         <tr>
             <td>@Column </td>
+            <td>Used to map a field in a java class to a column in DB table </td>
             <td>javax.persistence.Column;</td>
         </tr>
         <tr>
             <td>@Id </td>
+            <td>Used to mark a field in a java class as a primary key in 
+DB table.</td>
             <td>javax.persistence.Id;</td>
         </tr>
         <tr>
             <td>@Entity </td>
+            <td>Used to map a java class with DB table</td>
             <td>javax.persistence.Entity;</td>
         </tr>
         <tr>
             <td>@GeneratedValue </td>
+            <td>it is used to generate column id automatically</td>
             <td>javax.persistence.GeneratedValue;</td>
         </tr>
 
